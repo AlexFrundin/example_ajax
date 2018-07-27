@@ -1,0 +1,24 @@
+{% extends 'bootstrap4/bootstrap4.html'%}
+{% load bootstrap4 %}
+{% load rest_framework %}
+
+
+{% block bootstrap4_content %}
+
+<form action="{% url 'api-test2' %}" class="form" method="POST">
+  {%csrf_token%}
+  {%render_form form%}
+  {% buttons %}
+    <button type="submit" class="btn btn-primary">
+            Отправить
+    </button>
+{% endbuttons %}
+</form>
+
+{% for comment in allComment%}
+<pre>
+  {{comment.comment}}       {{comment.quantity}}
+</pre>
+{%endfor%}
+
+{% endblock %}
